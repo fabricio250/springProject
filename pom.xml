@@ -17,6 +17,10 @@
 		<servlet-api.version>3.1.0</servlet-api.version>
 		<servlet-jsp-api.version>2.3.1</servlet-jsp-api.version>
 		<jstl.version>1.2</jstl.version>
+		<apachetiles.version>3.0.7</apachetiles.version>
+		<webjar.jquery.version>3.2.1</webjar.jquery.version>
+		<webjar.bootstrap.version>3.3.7-1</webjar.bootstrap.version>
+		<webjar.font-awesome.version>4.7.0</webjar.font-awesome.version>
 	</properties>
 
 	<dependencies>
@@ -69,6 +73,54 @@
 			<version>${springframework.version}</version>
 		</dependency>
 
+		<!-- Tiles-core -->
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-core</artifactId>
+			<version>${apachetiles.version}</version>
+		</dependency>
+
+		<!-- Tiles-api -->
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-api</artifactId>
+			<version>${apachetiles.version}</version>
+		</dependency>
+
+		<!-- Tiles-jsp -->
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-jsp</artifactId>
+			<version>${apachetiles.version}</version>
+		</dependency>
+
+		<!-- Tiles-servlet -->
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-servlet</artifactId>
+			<version>${apachetiles.version}</version>
+		</dependency>
+
+		<!-- webjars/jquery -->
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>jquery</artifactId>
+			<version>${webjar.jquery.version}</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.webjars/bootstrap -->
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>bootstrap</artifactId>
+			<version>${webjar.bootstrap.version}</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.webjars/font-awesome -->
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>font-awesome</artifactId>
+			<version>${webjar.font-awesome.version}</version>
+		</dependency>
 
 	</dependencies>
 

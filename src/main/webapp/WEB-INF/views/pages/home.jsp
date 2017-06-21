@@ -7,8 +7,11 @@
 <title>Ao Vivo!</title>
 </head>
 <body>
-<h1>Welcome, ${nome}!</h1>
-<h2>Boxe Nacional</h2>
-
+<%-- <h1>Welcome, ${nome}!</h1>
+<h2>Boxe Nacional ${id}</h2> 
+<p>User-Agent: ${agent}</p>
+<p>Accept: ${accept}</p>
+<p>ip: ${ip}</p>
+<p>language: ${language}</p> --%>
 </body>
 </html>

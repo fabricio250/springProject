@@ -10,44 +10,63 @@
 </head>
 <body>
 	<h3>User Form</h3>
-	<h1>O usuário é: ${user.primeiroNome}</h1>
+	<c:choose>
+		<c:when test="${user.id > 0}">
+			<c:set var="formMethod" value="PUT"></c:set>
+			<c:url var="formAction" value="/user/${user.id}"></c:url>
+		</c:when>
+		<c:otherwise>
+			<c:set var="formMethod" value="POST"></c:set>
+			<c:url var="formAction" value="/user"></c:url>
+		</c:otherwise>
+	</c:choose>
+	<div class="container">
+		<h1>O usuário é: ${user.primeiroNome}</h1>
+	</div>
+	<div class="container">
 	<form:form modelAttribute="user"
-		action="${pageContext.request.contextPath}/user" method="POST">
-		<div>
+		action="${formAction}" method="${formMethod}">
+		<div class="form-group row">
 			<label>Primeiro nome:</label>
-			<form:input path="primeiroNome" id="primeiroNome" type="text" />
+			<form:input class="form-control" path="primeiroNome" id="primeiroNome" type="text" />
 		</div>
-		<div>
+		<div class="form-group row">
 			<label>Último Nome:</label>
-			<form:input path="ultimoNome" id="ultimoNome" type="text" />
+			<form:input class="form-control" path="ultimoNome" id="ultimoNome" type="text" />
 		</div>
-		<div>
+		<div class="form-group row">
 			<label>CPF:</label>
-			<form:input path="cpf" id="cpf" type="text" />
+			<form:input class="form-control" path="cpf" id="cpf" type="text" />
 		</div>
-		<div>
+		<div class="form-group row">
 			<label>Idade:</label>
-			<form:input path="idade" id="idade" type="text" />
+			<form:input class="form-control" path="idade" id="idade" type="text" />
 		</div>
-		<div>
+		<div class="form-group row"">
 			<label>Sexo</label>
-			<form:select path="sexo"  id="sexo">
+			<form:select path="sexo" id="sexo">
 				<form:option value="M"></form:option>
 				<form:option value="F"></form:option>
 			</form:select>
 		</div>
-		<div>
-			<button type="submit">Save</button>
+		<div class="form-group row">
+			<button class="btn btn-primary" type="submit">
+			 	<i class="fa fa-floppy-o" aria-hidden="true"></i> Save
+			</button>
 		</div>
 	</form:form>
-	<h2>List of User:</h2>	
-	<table border="2">
+	</div>
+	<h2>List of User:</h2>
+	<table class="table table-striped" border="2">
 		<tr>
 			<td width="100" align="center">Primeiro Nome</td>
 			<td width="100" align="center">Ultimo Nome</td>
 			<td width="100" align="center">CPF</td>
 			<td width="50" align="center">Idade</td>
 			<td width="50" align="center">Sexo</td>
+			<td width="50" align="center">Edit</td>
+			<td width="50" align="center">Delete</td>
+
 		</tr>
 		<c:forEach items="${users}" var="user">
 			<tr>
@@ -56,11 +75,15 @@
 				<td align="left">${user.cpf}</td>
 				<td align="center">${user.idade}</td>
 				<td align="center">${user.sexo}</td>
+
+				<td align="center"><a
+					href="${pageContext.request.contextPath}/user/${user.id}">Edit</a></td>
 			</tr>
 		</c:forEach>
 	</table>
 	<div>
 		<button type="submit">Apagar</button>
 	</div>
+	
 </body>
 </html>

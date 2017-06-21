@@ -3,6 +3,7 @@ package br.com.season.springproject.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import br.com.season.springproject.entity.User;
@@ -14,7 +15,14 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	public User findById(Integer id) {
-		return null;
+		User found = new User();
+		found.setId(id);
+		List<User> list = findAll();
+		
+		if(list.contains(found)){
+			found = list.get(list.indexOf(found));
+		}
+		return found;
 	}
 
 	@Override
@@ -28,9 +36,10 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void update(User user) {
-		// TODO Auto-generated method stub
-		
+	public User update(Integer userId, User user) {
+		User foundUser = findById(userId);
+		BeanUtils.copyProperties(user, foundUser, "id");
+		return foundUser;
 	}
 
 	@Override
