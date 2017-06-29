@@ -21,6 +21,9 @@
 		<webjar.jquery.version>3.2.1</webjar.jquery.version>
 		<webjar.bootstrap.version>3.3.7-1</webjar.bootstrap.version>
 		<webjar.font-awesome.version>4.7.0</webjar.font-awesome.version>
+		<mysql.connector.version>5.1.42</mysql.connector.version>
+		<hibernate.entitymanager.version>5.2.10.Final</hibernate.entitymanager.version>
+		<hibernate.validator.version>5.4.1.Final</hibernate.validator.version>
 	</properties>
 
 	<dependencies>
@@ -115,11 +118,39 @@
 			<version>${webjar.bootstrap.version}</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.webjars/font-awesome -->
+		<!-- Webjars/font-awesome -->
 		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>font-awesome</artifactId>
 			<version>${webjar.font-awesome.version}</version>
+		</dependency>
+
+		<!-- JPA /spring-orm -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>${springframework.version}</version>
+		</dependency>
+
+		<!-- mysql-connector-java -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>${mysql.connector.version}</version>
+		</dependency>
+
+		<!-- hibernate-entitymanager -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>${hibernate.entitymanager.version}</version>
+		</dependency>
+
+		<!-- hibernate-validator -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>${hibernate.validator.version}</version>
 		</dependency>
 
 	</dependencies>

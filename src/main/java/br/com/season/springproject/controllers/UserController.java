@@ -23,7 +23,6 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
-	private AtomicInteger incrementId = new AtomicInteger(); //Incrementa um inteiro sem repetir nunca. Grava o valor em memória.
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public String users(ModelMap map){
@@ -36,7 +35,6 @@ public class UserController {
 
 	@RequestMapping(method = RequestMethod.POST)
 	public String save(User user, ModelMap map){
-		user.setId(incrementId.incrementAndGet());
 		userService.save(user);
 		user = new User();
 		map.addAttribute("user", user);
