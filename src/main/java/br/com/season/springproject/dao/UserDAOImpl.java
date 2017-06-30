@@ -22,7 +22,7 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public List<User> findAll() {
-		return null;
+		return em.createQuery("SELECT u FROM User u", User.class).getResultList();
 	}
 
 	@Override
@@ -31,8 +31,9 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public void update(User user) {
+	public User update(User user) {
 		em.merge(user);
+		return user;
 	}
 
 	@Override
@@ -40,4 +41,10 @@ public class UserDAOImpl implements UserDAO {
 		em.remove(findById(user.getId()));
 	}
 
+	@Override
+	public User findByCpf(String cpf){
+		return em.createNamedQuery("User.findByCpf", User.class)
+				.setParameter("cpf", cpf)
+				.getSingleResult();
+	}
 }

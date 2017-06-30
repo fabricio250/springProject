@@ -78,6 +78,8 @@
 
 				<td align="center"><a
 					href="${pageContext.request.contextPath}/user/${user.id}">Edit</a></td>
+				<td align="center"><a
+					href="${pageContext.request.contextPath}/user/${user.id}">Delete</a></td>	
 			</tr>
 		</c:forEach>
 	</table>

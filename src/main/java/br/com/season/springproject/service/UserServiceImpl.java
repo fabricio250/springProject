@@ -1,9 +1,7 @@
 package br.com.season.springproject.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,8 +16,6 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserDAO userDAO;
 	
-	List<User> users = new ArrayList<>();
-	
 	@Override
 	public User findById(Integer id) {
 		return userDAO.findById(id);
@@ -27,7 +23,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public List<User> findAll() {
-		return users;
+		return userDAO.findAll();
 	}
 
 	//As regras para gravação no banco devem ser feitas nessa classe. Ex: If == null.
@@ -36,17 +32,28 @@ public class UserServiceImpl implements UserService {
 		userDAO.save(user);
 	}
 
+//	@Override
+//	public User update(Integer userId, User user) {
+//		User foundUser = findById(userId);
+//		BeanUtils.copyProperties(user, foundUser, "id");
+//		userDAO.update(foundUser);
+//		return foundUser;
+//	}
+	
 	@Override
-	public User update(Integer userId, User user) {
-		User foundUser = findById(userId);
-		BeanUtils.copyProperties(user, foundUser, "id");
-		userDAO.update(foundUser);
-		return foundUser;
+	public User update(User user) {
+		userDAO.update(user);
+		return user;
 	}
 
 	@Override
 	public void delete(User user) {
 		userDAO.delete(user);
+	}
+
+	@Override
+	public User findByCpf(String cpf) {
+		return userDAO.findByCpf(cpf);
 	}
 
 
